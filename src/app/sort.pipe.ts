@@ -2,21 +2,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'sort',
+  pure: false,
 })
 export class SortPipe implements PipeTransform {
   // personal note: revisit recurion...it's terrifying lol
-  transform(value: any, sortValue: string): any {
+  transform(value: any, propName: string): any {
     return value.sort((a, b) => {
-      let nameA = a[sortValue].toUpperCase();
-      let nameB = b[sortValue].toUpperCase();
-
-      if (nameA < nameB) {
+      if (a[propName] > b[propName]) {
+        return 1;
+      } else {
         return -1;
       }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
     });
   }
 }
