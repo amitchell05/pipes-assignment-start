@@ -9,10 +9,13 @@ export class SortPipe implements PipeTransform {
   transform(value: any, propName: string): any {
     return value.sort((a, b) => {
       if (a[propName] > b[propName]) {
+        // returns something
         return 1;
       } else {
+        // returns something
         return -1;
       }
+      // return 0 => it will do nothing
     });
   }
 }
